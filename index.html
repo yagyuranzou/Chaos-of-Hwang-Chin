@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>黃巾之亂 - CHAOS OF HWANG CHIN</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#cfcfcf;
+    color:#000;
+    font-family:
+    "MS Gothic",
+    "Osaka-Mono",
+    monospace;
+    overflow:hidden;
+}
+
+/* =========================
+BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.06;
+
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.15) 0px,
+        rgba(0,0,0,0.15) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+    height:110px;
+    border-bottom:4px solid #000;
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.logo{
+    font-size:60px;
+    font-weight:900;
+    line-height:0.9;
+}
+
+.sub{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.build{
+    margin-top:10px;
+    font-size:12px;
+    opacity:0.7;
+    line-height:1.7;
+}
+
+/* =========================
+MAIN
+========================= */
+
+.main{
+    display:flex;
+    height:calc(100vh - 110px);
+}
+
+/* =========================
+PANELS
+========================= */
+
+.left{
+    width:19%;
+    border-right:4px solid #000;
+    padding:18px;
+}
+
+.mid{
+    width:51%;
+    border-right:4px solid #000;
+    display:flex;
+    flex-direction:column;
+}
+
+.right{
+    width:30%;
+    padding:20px;
+}
+
+/* =========================
+BUTTON
+========================= */
+
+.btn{
+    width:100%;
+    background:#000;
+    color:#fff;
+    border:none;
+    padding:18px;
+    margin-bottom:16px;
+    border-radius:40px;
+    cursor:pointer;
+
+    font-size:28px;
+    font-weight:bold;
+
+    transition:0.15s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+GENERAL
+========================= */
+
+.generalBox{
+    border:4px solid #000;
+    background:#efefef;
+    padding:12px;
+}
+
+.avatar{
+    width:100%;
+    aspect-ratio:1/1;
+    border:4px solid #000;
+    background:#fff;
+    margin-bottom:14px;
+}
+
+.gname{
+    font-size:52px;
+    font-weight:900;
+    line-height:0.95;
+}
+
+.groman{
+    margin-top:6px;
+    font-size:13px;
+    letter-spacing:2px;
+    opacity:0.65;
+    text-transform:uppercase;
+}
+
+.gstate{
+    margin-top:14px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.gmeta{
+    margin-top:16px;
+    font-size:14px;
+    line-height:1.8;
+    opacity:0.85;
+}
+
+/* =========================
+CARDS
+========================= */
+
+.cards{
+    height:430px;
+    border-bottom:4px solid #000;
+
+    display:flex;
+    gap:14px;
+
+    padding:16px;
+}
+
+.card{
+    flex:1;
+
+    background:#f6f6f6;
+
+    border:3px solid #000;
+    outline:1px solid #555;
+    outline-offset:-6px;
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px;
+
+    box-shadow:4px 4px 0px rgba(0,0,0,0.15);
+
+    transform:
+    rotate(calc((var(--r) - 0.5) * 2deg));
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:0.03;
+    pointer-events:none;
+
+    background-image:
+    repeating-linear-gradient(
+        45deg,
+        #000 0px,
+        #000 1px,
+        transparent 1px,
+        transparent 3px
+    );
+}
+
+.suit{
+    position:absolute;
+    top:12px;
+    left:16px;
+
+    font-size:38px;
+    font-weight:bold;
+}
+
+.event{
+    margin-top:14px;
+
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+.num{
+    margin-top:20px;
+
+    font-size:92px;
+    font-weight:900;
+    line-height:1;
+}
+
+.symbol{
+    font-size:52px;
+    opacity:0.7;
+}
+
+.cname{
+    font-size:34px;
+    font-weight:900;
+}
+
+.serial{
+    font-size:10px;
+    opacity:0.7;
+    margin-bottom:2px;
+}
+
+/* =========================
+STATUS
+========================= */
+
+.status{
+    border-bottom:4px solid #000;
+    padding:16px 22px;
+
+    font-size:22px;
+    font-weight:bold;
+
+    line-height:1.8;
+}
+
+/* =========================
+WAVE
+========================= */
+
+.waveWrap{
+    flex:1;
+    position:relative;
+    background:#000;
+}
+
+#wave{
+    width:100%;
+    height:100%;
+}
+
+.waveMeta{
+    position:absolute;
+    top:12px;
+    left:14px;
+
+    color:#00ff00;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =========================
+TAROT
+========================= */
+
+.ttitle{
+    font-size:48px;
+    font-weight:900;
+    margin-bottom:16px;
+}
+
+.tarotBox{
+    border:4px solid #000;
+    background:#efefef;
+
+    height:84%;
+
+    padding:22px;
+
+    position:relative;
+}
+
+.tarot{
+    white-space:pre-line;
+
+    font-size:26px;
+    line-height:1.9;
+    font-weight:bold;
+}
+
+.meta{
+    position:absolute;
+    bottom:16px;
+    left:22px;
+
+    font-size:12px;
+    line-height:1.7;
+    opacity:0.7;
+}
+
+.super{
+    margin-top:18px;
+
+    font-size:44px;
+    font-weight:900;
+
+    animation:flash 0.8s infinite alternate;
+}
+
+@keyframes flash{
+    from{opacity:0.4;}
+    to{opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<div>
+
+<div class="logo">
+黃巾之亂
+</div>
+
+<div class="sub">
+CHAOS OF HWANG CHIN
+</div>
+
+<div class="build">
+FORTUNE SOUND ENGINE<br>
+ver 1.1.8
+</div>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<!-- LEFT -->
+<div class="left">
+
+<button class="btn" onclick="roll()">
+運勢発動
+</button>
+
+<button class="btn" onclick="exportMidi()">
+midi出力
+</button>
+
+<div class="generalBox">
+
+<canvas id="avatar" class="avatar"></canvas>
+
+<div class="gname" id="gname">
+張角
+</div>
+
+<div class="groman" id="groman">
+CHANG CHIAO
+</div>
+
+<div class="gstate" id="gstate">
+信号拡張
+</div>
+
+<div class="gmeta" id="gmeta">
+RHYTHM++<br>
+FIELD : EXPANDING<br>
+CHAOS : HIGH
+</div>
+
+</div>
+
+</div>
+
+<!-- MID -->
+<div class="mid">
+
+<div class="cards" id="cards"></div>
+
+<div class="status" id="status">
+状態：拡張中<br>
+興致：高揚<br>
+音場：揺らぎ<br>
+同期率：72%
+</div>
+
+<div class="waveWrap">
+
+<canvas id="wave"></canvas>
+
+<div class="waveMeta">
+CH1 RHYTHM<br>
+CH2 LEAD<br>
+CH3 PAD<br>
+CH4 BASS
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<div class="ttitle">
+タロット解釈
+</div>
+
+<div class="tarotBox">
+
+<div class="tarot" id="tarot"></div>
+
+<div class="meta">
+FORTUNE RATE : 72%<br>
+SYNC : CHAOTIC<br>
+FIELD : EXPANDING
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+GENERALS
+========================= */
+
+const generals = [
+
+{
+name:"張角",
+roman:"CHANG CHIAO",
+state:"信号拡張",
+meta:"RHYTHM++<br>FIELD : EXPANDING<br>CHAOS : HIGH",
+advice:"美味しいものをたくさん食べて、感覚を開く"
+},
+
+{
+name:"張寶",
+roman:"CHANG PAO",
+state:"圧力上昇",
+meta:"TEMPO++<br>SYNC : AGGRESSIVE<br>FIELD : RISING",
+advice:"身だしなみを整えて、状態を作る"
+},
+
+{
+name:"鄧茂",
+roman:"TENG MAO",
+state:"揺らぎ増幅",
+meta:"DETUNE++<br>FIELD : DRIFTING<br>CHAOS : MID",
+advice:"ゆっくりリズムを調整する"
+},
+
+{
+name:"波才",
+roman:"PO TSAI",
+state:"外界拡散",
+meta:"SPREAD++<br>FIELD : OPEN<br>SYNC : LOW",
+advice:"外の世界とつながる"
+},
+
+{
+name:"張曼成",
+roman:"CHANG MAN-CHENG",
+state:"構造再編",
+meta:"BREAKDOWN++<br>FIELD : COLLAPSING<br>CHAOS : LOW",
+advice:"環境を整理する"
+},
+
+{
+name:"程遠志",
+roman:"CHENG YUAN-CHIH",
+state:"混沌収束",
+meta:"GLITCH++<br>FIELD : RANDOM<br>CHAOS : MAX",
+advice:"シンセサイザーで遊ぶ"
+}
+
+];
+
+/* =========================
+CARDS
+========================= */
+
+const cards = [
+
+{
+num:0,
+name:"密偵",
+symbol:"◉",
+text:"流れが静かに整う"
+},
+
+{
+num:1,
+name:"火燒糧車",
+symbol:"≋",
+text:"転機が自然に訪れる"
+},
+
+{
+num:2,
+name:"頭風",
+symbol:"〰",
+text:"思考が鋭くなる"
+},
+
+{
+num:3,
+name:"刺客",
+symbol:"†",
+text:"行動が結果に直結する"
+},
+
+{
+num:4,
+name:"名伶",
+symbol:"♫",
+text:"感覚が研ぎ澄まされる"
+},
+
+{
+num:5,
+name:"中毒",
+symbol:"☓",
+text:"内面が再調整される"
+},
+
+{
+num:6,
+name:"士氣如洪",
+symbol:"▲",
+text:"勢いが最大化する"
+},
+
+{
+num:7,
+name:"迷香",
+symbol:"◎",
+text:"認識が曖昧になる"
+}
+
+];
+
+/* =========================
+SHUFFLE
+========================= */
+
+function shuffle(arr){
+
+let a=[...arr];
+
+for(let i=a.length-1;i>0;i--){
+
+let j=Math.floor(Math.random()*(i+1));
+
+[a[i],a[j]]=[a[j],a[i]];
+}
+
+return a;
+}
+
+/* =========================
+BUILD GENERAL
+========================= */
+
+function buildGeneral(g){
+
+document.getElementById("gname").innerText=g.name;
+document.getElementById("groman").innerText=g.roman;
+document.getElementById("gstate").innerText=g.state;
+document.getElementById("gmeta").innerHTML=g.meta;
+
+drawAvatar(g.name);
+
+}
+
+/* =========================
+BUILD CARDS
+========================= */
+
+function buildCards(pool){
+
+const suits=["♠","♥","♣","♦"];
+
+let html="";
+
+pool.forEach(c=>{
+
+html += `
+
+<div class="card"
+style="--r:${Math.random()}">
+
+<div class="suit">
+${suits[Math.floor(Math.random()*4)]}
+</div>
+
+<div class="event">
+EVENT CARD
+</div>
+
+<div class="num">
+${c.num}
+</div>
+
+<div class="symbol">
+${c.symbol}
+</div>
+
+<div class="cname">
+${c.name}
+</div>
+
+<div class="serial">
+FORTUNE SYSTEM
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("cards").innerHTML=html;
+
+}
+
+/* =========================
+BUILD TAROT
+========================= */
+
+function buildTarot(g,pool){
+
+let txt =
+`今日宜：\n${g.advice}\n\n`;
+
+pool.forEach(c=>{
+txt += c.text + "\n";
+});
+
+document.getElementById("tarot").innerText=txt;
+
+}
+
+/* =========================
+AVATAR
+========================= */
+
+function drawAvatar(name){
+
+const c=document.getElementById("avatar");
+const x=c.getContext("2d");
+
+c.width=400;
+c.height=400;
+
+x.fillStyle="#fff";
+x.fillRect(0,0,400,400);
+
+x.fillStyle="#000";
+
+/* woodcut-ish face */
+
+x.beginPath();
+x.arc(200,160,95,0,Math.PI*2);
+x.fill();
+
+x.fillRect(120,250,160,45);
+
+x.fillStyle="#fff";
+
+x.fillRect(160,145,24,24);
+x.fillRect(218,145,24,24);
+
+x.fillStyle="#000";
+
+x.fillRect(155,205,90,18);
+
+x.fillRect(100,290,200,28);
+
+x.font="bold 30px monospace";
+x.fillText(name,20,360);
+
+}
+
+/* =========================
+AUDIO
+========================= */
+
+let ctx;
+let analyser;
+let data;
+let osc=[];
+
+function initAudio(){
+
+ctx = new(window.AudioContext||window.webkitAudioContext)();
+
+analyser = ctx.createAnalyser();
+analyser.fftSize=256;
+
+data = new Uint8Array(analyser.frequencyBinCount);
+
+const types=[
+"square",
+"sine",
+"triangle",
+"square"
+];
+
+for(let i=0;i<4;i++){
+
+let o=ctx.createOscillator();
+let g=ctx.createGain();
+
+o.type=types[i];
+
+o.frequency.value=100 + i*60;
+
+g.gain.value=0.04;
+
+o.connect(g);
+g.connect(analyser);
+
+o.start();
+
+osc.push(o);
+
+}
+
+analyser.connect(ctx.destination);
+
+drawWave();
+
+}
+
+/* =========================
+WAVE
+========================= */
+
+function drawWave(){
+
+const c=document.getElementById("wave");
+const x=c.getContext("2d");
+
+c.width=c.offsetWidth;
+c.height=c.offsetHeight;
+
+function loop(){
+
+requestAnimationFrame(loop);
+
+analyser.getByteTimeDomainData(data);
+
+x.fillStyle="#000";
+x.fillRect(0,0,c.width,c.height);
+
+for(let l=0;l<4;l++){
+
+x.beginPath();
+
+let dx=c.width/data.length;
+
+for(let i=0;i<data.length;i++){
+
+let v=data[i]/128;
+let y=v*c.height/2;
+
+y += l*5;
+
+if(i===0)
+x.moveTo(i*dx,y);
+else
+x.lineTo(i*dx,y);
+
+}
+
+x.lineWidth=1+l*0.5;
+
+x.strokeStyle=
+l===0 ? "#ffffff" :
+l===1 ? "#999999" :
+l===2 ? "#555555" :
+"#00ff00";
+
+x.stroke();
+
+}
+
+}
+
+loop();
+
+}
+
+/* =========================
+ROLL
+========================= */
+
+function roll(){
+
+if(!ctx){
+
+initAudio();
+
+}else{
+
+ctx.resume();
+
+}
+
+const g =
+generals[
+Math.floor(Math.random()*generals.length)
+];
+
+buildGeneral(g);
+
+const pool =
+shuffle(cards).slice(0,4);
+
+buildCards(pool);
+
+buildTarot(g,pool);
+
+document.getElementById("status").innerHTML=
+`
+状態：拡張中<br>
+興致：高揚<br>
+音場：揺らぎ<br>
+同期率：${Math.floor(Math.random()*40)+60}%
+`;
+
+osc[0].frequency.value=
+2 + pool[0].num;
+
+osc[1].frequency.value=
+180 + pool[1].num*28;
+
+osc[2].frequency.value=
+120 + pool[2].num*18;
+
+osc[3].frequency.value=
+60 + pool[3].num*10;
+
+}
+
+/* =========================
+EXPORT MIDI
+========================= */
+
+function exportMidi(){
+
+let blob =
+new Blob(
+["FORTUNE MIDI"],
+{type:"audio/midi"}
+);
+
+let url =
+URL.createObjectURL(blob);
+
+let a=document.createElement("a");
+
+a.href=url;
+a.download="fortune.mid";
+
+a.click();
+
+}
+
+/* init */
+
+roll();
+
+</script>
+
+</body>
+</html>
