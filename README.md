@@ -11,14 +11,14 @@ The **CHAOS of HWANG CHIN** is an interactive generative system that bridges a r
 Each General acts as a **System Preset**, defining the macro-logic of the sonic structure and ritual advice.  
 * **Selection Logic**: The General is determined by a **Hidden Dice Roll** (1D6) upon activation.
 
-| Name                | Kanji      | Sonic Traits // 音感特性        | Ritual Advice // 今日宜 
------------------------------------------------------------------------------------------------
-| **Chang Chiao**     | **張角**   | High Density / Full Active     | 美味しいものを食べて感覚を開く 
-| **Chang Pao**       | **張宝**   | Pressure Rise / Tempo Accel    | 身だしなみを整えて状態を作る   
-| **Teng Mao**        | **鄧茂**   | Flutter / Pitch Drift          | ゆっくりリズムを調整する      
-| **Po Tsai**         | **波才**   | Spatial Expansion / Ambience   | 外の世界とつながる           
-| **Chang Man-cheng** | **張曼成** | Structural Breakdown / Silence | 環境を整理する               
-| **Cheng Yuan-chih** | **程遠志** | Chaos Convergence / Glitch     | 合成器で遊ぶ                 
+| Name                | Kanji      
+---------------------------------- 
+| **Chang Chiao**     | **張角**    
+| **Chang Pao**       | **張宝**       
+| **Teng Mao**        | **鄧茂**         
+| **Po Tsai**         | **波才**   
+| **Chang Man-cheng** | **張曼成**               
+| **Cheng Yuan-chih** | **程遠志**  
 
 ---
 
